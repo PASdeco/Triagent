@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SubmitRouteImport } from './routes/submit'
 import { Route as ResultsRouteImport } from './routes/results'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as ArenaRouteImport } from './routes/arena'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -22,6 +23,11 @@ const SubmitRoute = SubmitRouteImport.update({
 const ResultsRoute = ResultsRouteImport.update({
   id: '/results',
   path: '/results',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ArenaRoute = ArenaRouteImport.update({
@@ -38,12 +44,14 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/arena': typeof ArenaRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/results': typeof ResultsRoute
   '/submit': typeof SubmitRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/arena': typeof ArenaRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/results': typeof ResultsRoute
   '/submit': typeof SubmitRoute
 }
@@ -51,20 +59,22 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/arena': typeof ArenaRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/results': typeof ResultsRoute
   '/submit': typeof SubmitRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/arena' | '/results' | '/submit'
+  fullPaths: '/' | '/arena' | '/leaderboard' | '/results' | '/submit'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/arena' | '/results' | '/submit'
-  id: '__root__' | '/' | '/arena' | '/results' | '/submit'
+  to: '/' | '/arena' | '/leaderboard' | '/results' | '/submit'
+  id: '__root__' | '/' | '/arena' | '/leaderboard' | '/results' | '/submit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ArenaRoute: typeof ArenaRoute
+  LeaderboardRoute: typeof LeaderboardRoute
   ResultsRoute: typeof ResultsRoute
   SubmitRoute: typeof SubmitRoute
 }
@@ -83,6 +93,13 @@ declare module '@tanstack/react-router' {
       path: '/results'
       fullPath: '/results'
       preLoaderRoute: typeof ResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/arena': {
@@ -105,6 +122,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ArenaRoute: ArenaRoute,
+  LeaderboardRoute: LeaderboardRoute,
   ResultsRoute: ResultsRoute,
   SubmitRoute: SubmitRoute,
 }
