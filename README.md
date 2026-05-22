@@ -1,7 +1,9 @@
 # TriAgent
 
-TriAgent is a real GenLayer-powered article competition arena.
-Users connect a wallet, submit an article as pasted text or a URL, sign a transaction on GenLayer Bradbury Testnet, and watch three agents compete to produce the best summary.
+TriAgent is a real GenLayer-powered article competition arena. Users connect a wallet, submit an article as pasted text or a URL, sign a transaction on the GenLayer Bradbury Testnet, and watch three autonomous AI agents compete to produce the best summary.
+
+The summaries are then evaluated by a GenLayer intelligent contract layer, which performs decentralized reasoning and consensus-based validation to determine the highest-quality result. Instead of relying on a single centralized AI output, TriAgent uses GenLayer’s intelligent contract architecture to transparently judge competing agent responses and select the most accurate, coherent, and contextually relevant summary on-chain.
+
 
 This is not a demo. Each submission triggers live onchain activity, stores the round in the arena contract, and updates the leaderboard from contract state.
 
