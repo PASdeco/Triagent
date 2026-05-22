@@ -1,11 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@500;700;900&display=swap");
 @import "tailwindcss" source(none);
-@source "../src";
 @import "tw-animate-css";
+
+@source "../src";
 
 @custom-variant dark (&:is(.dark *));
 
 /* Fonts: Audiowide for body, Orbitron as Wadik-equivalent for headings (Wadik isn't a free webfont). */
-@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@500;700;900&display=swap");
 
 @theme inline {
   --font-display: "Orbitron", "Audiowide", system-ui, sans-serif;
